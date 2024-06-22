@@ -1,0 +1,47 @@
+@model IEnumerable<lista_tarefa.Models.Tarefa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-shadow:1px 1px 0 #444">Lista de tarefas</h1>
+
+<p>
+    <a asp-action="Create"><i class="large material-icons">create</i></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fazer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fazendo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feito)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fazer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fazendo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feito)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="large material-icons">edit</i></a>-
+                <!--<a asp-action="Details" asp-route-id="@item.Id"><i class="large material-icons">details</i></a>-->
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="large material-icons">delete_forever</i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
